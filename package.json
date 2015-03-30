@@ -6,7 +6,7 @@
     "twitter": "tjanczuk"
   },
   "version": "0.10.2-pre",
-  "description": "Edge.js: run .NET and Node.js in-process on Windows, Mac OS, and Linux",
+  "description": "Edge.js: run .NET and Node.js in-process on Windows, Mac OS, and Linux. Hacked for Atom Shell support",
   "tags": [
     "owin",
     "edge",
