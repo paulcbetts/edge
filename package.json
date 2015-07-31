@@ -28,7 +28,7 @@
     }
   ],
   "dependencies": {
-    "edge-cs": "0.2.7",
+    "@paulcbetts/edge-cs": "^0.2.8-pre",
     "nan": "^2.0.9"
   },
   "devDependencies": {
