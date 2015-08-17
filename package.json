@@ -4,7 +4,7 @@
     "name": "Tomasz Janczuk <tomasz@janczuk.org>, Paul Betts <paul@paulbetts.org>",
     "url": "http://tomasz.janczuk.org",
     "twitter": "tjanczuk"
-    },
+  },
   "version": "4.0.0",
   "description": "Edge.js: run .NET and Node.js in-process on Windows, Mac OS, and Linux. Hacked for Electron support",
   "tags": [
