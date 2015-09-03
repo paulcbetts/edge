@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "@paulcbetts/edge-cs": "^0.2.8-pre",
-    "nan": "^1.6.2"
+    "nan": "^2.0.5"
   },
   "devDependencies": {
     "mocha": "1.8.1",
