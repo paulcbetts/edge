@@ -15,7 +15,7 @@ void init(Handle<Object> target)
     DBG("edge::init");
     V8SynchronizationContext::Initialize();
     enableScriptIgnoreAttribute = (0 < GetEnvironmentVariable("EDGE_ENABLE_SCRIPTIGNOREATTRIBUTE", NULL, 0));
-    NODE_SET_METHOD(target, "initializeClrFunc", initializeClrFunc);
+    Nan::SetMethod(target, "initializeClrFunc", initializeClrFunc);
 }
 
 #pragma unmanaged

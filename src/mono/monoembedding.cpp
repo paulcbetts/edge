@@ -141,7 +141,7 @@ MonoObject* MonoEmbedding::CreateDateTime(double ticks)
         method = mono_class_get_method_from_name(MonoEmbedding::GetClass(), "CreateDateTime", -1);
     }
 
-    void* args[] = { &ticks };
+    void* info[] = { &ticks };
     MonoObject* ret = mono_runtime_invoke(method, NULL, args, (MonoObject**)&exc);
 
     return ret;
@@ -183,8 +183,8 @@ MonoArray* MonoEmbedding::IEnumerableToArray(MonoObject* ienumerable, MonoExcept
     if (!method)
         method = mono_class_get_method_from_name(MonoEmbedding::GetClass(), "IEnumerableToArray", -1);
 
-    void* args[1];
-    args[0] = ienumerable;
+    void* info[1];
+    info[0] = ienumerable;
     MonoArray* values = (MonoArray*)mono_runtime_invoke(method, NULL, args, (MonoObject**)exc);
     if(*exc)
         return NULL;
@@ -199,8 +199,8 @@ MonoArray* MonoEmbedding::IDictionaryToFlatArray(MonoObject* dictionary, MonoExc
     if (!method)
         method = mono_class_get_method_from_name(MonoEmbedding::GetClass(), "IDictionaryToFlatArray", -1);
 
-    void* args[1];
-    args[0] = dictionary;
+    void* info[1];
+    info[0] = dictionary;
     MonoArray* values = (MonoArray*)mono_runtime_invoke(method, NULL, args, (MonoObject**)exc);
     if(*exc)
         return NULL;
@@ -215,9 +215,9 @@ void MonoEmbedding::ContinueTask(MonoObject* task, MonoObject* state, MonoExcept
     if (!method)
         method = mono_class_get_method_from_name(MonoEmbedding::GetClass(), "ContinueTask", -1);
 
-    void* args[2];
-    args[0] = task;
-    args[1] = state;
+    void* info[2];
+    info[0] = task;
+    info[1] = state;
     mono_runtime_invoke(method, NULL, args, (MonoObject**)exc);
 }
 
@@ -229,7 +229,7 @@ double MonoEmbedding::GetDateValue(MonoObject* dt, MonoException** exc)
     if (!method)
         method = mono_class_get_method_from_name(MonoEmbedding::GetClass(), "GetDateValue", -1);
 
-    void* args[] = { mono_object_unbox(dt) };
+    void* info[] = { mono_object_unbox(dt) };
 
     MonoObject* obj = mono_runtime_invoke(method, NULL, args, (MonoObject**)exc);
     if (*exc)
@@ -245,7 +245,7 @@ double MonoEmbedding::Int64ToDouble(MonoObject* i64, MonoException** exc)
     if (!method)
         method = mono_class_get_method_from_name(MonoEmbedding::GetClass(), "Int64ToDouble", -1);
 
-    void* args[] = { mono_object_unbox(i64) };
+    void* info[] = { mono_object_unbox(i64) };
 
     MonoObject* obj = mono_runtime_invoke(method, NULL, args, (MonoObject**)exc);
     if (*exc)
@@ -261,7 +261,7 @@ MonoString* MonoEmbedding::ToString(MonoObject* o, MonoException** exc)
     if (!method)
         method = mono_class_get_method_from_name(MonoEmbedding::GetClass(), "ObjectToString", -1);
 
-    void* args[] = { o };
+    void* info[] = { o };
 
     return (MonoString*)mono_runtime_invoke(method, NULL, args, (MonoObject**)exc);
 }
@@ -274,7 +274,7 @@ MonoString* MonoEmbedding::TryConvertPrimitiveOrDecimal(MonoObject* obj, MonoExc
     if (!method)
         method = mono_class_get_method_from_name(MonoEmbedding::GetClass(), "TryConvertPrimitiveOrDecimal", -1);
 
-    void* args[] = { obj };
+    void* info[] = { obj };
 
     return (MonoString*)mono_runtime_invoke(method, NULL, args, (MonoObject**)exc);
 }

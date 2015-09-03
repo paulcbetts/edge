@@ -20,7 +20,7 @@ NodejsFunc::NodejsFunc(Handle<Function> function)
 {
     DBG("NodejsFunc::NodejsFunc");
     this->Func = new Persistent<Function>;
-    NanAssignPersistent(*(this->Func), function);
+    *(this->Func).Reset( function);
 }
 
 NodejsFunc::~NodejsFunc()

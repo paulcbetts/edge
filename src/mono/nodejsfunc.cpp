@@ -19,12 +19,12 @@ NodejsFunc::NodejsFunc(Handle<Function> function)
         ctor = mono_class_get_method_from_name(GetNodejsFuncClass(), ".ctor", -1);
 
     this->Func = new Persistent<Function>;
-    NanAssignPersistent(*(this->Func), function);
+    *(this->Func).Reset( function);
 
     MonoObject* thisObj = mono_object_new(mono_domain_get(), GetNodejsFuncClass());
     MonoException* exc = NULL;
     void *thisPtr = this;
-    void *args[] = { &thisPtr };
+    void *info[] = { &thisPtr };
     mono_runtime_invoke(ctor, thisObj, args, (MonoObject**)&exc);
     _this = mono_gchandle_new_weakref(thisObj, FALSE);
 }
@@ -32,7 +32,7 @@ NodejsFunc::NodejsFunc(Handle<Function> function)
 NodejsFunc::~NodejsFunc() 
 {
     DBG("NodejsFunc::~NodejsFunc");
-    NanDisposePersistent(*(this->Func));
+    *(this->Func.Reset());
     delete this->Func;
 }
 

@@ -15,7 +15,7 @@ void init(Handle<Object> target)
     V8SynchronizationContext::Initialize();
     MonoEmbedding::Initialize();
     enableScriptIgnoreAttribute = getenv("EDGE_ENABLE_SCRIPTIGNOREATTRIBUTE") != NULL;
-    NODE_SET_METHOD(target, "initializeClrFunc", initializeClrFunc);
+    Nan::SetMethod(target, "initializeClrFunc", initializeClrFunc);
 }
 
 NODE_MODULE(edge, init);

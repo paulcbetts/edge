@@ -16,7 +16,7 @@
  */
 #include "edge.h"
 
-PersistentDisposeContext::PersistentDisposeContext(Persistent<Value>* handle) 
+Nan::PersistentDisposeContext::PersistentDisposeContext(Persistent<Value>* handle) 
     : ptr((void*)handle)
 {
     DBG("PersistentDisposeContext::PersistentDisposeContext");
@@ -26,6 +26,6 @@ void PersistentDisposeContext::CallDisposeOnV8Thread() {
     DBG("PersistentDisposeContext::CallDisposeOnV8Thread");
 
     Persistent<Value>* handle = (Persistent<Value>*)ptr.ToPointer();
-    NanDisposePersistent(*handle);
+    *handle.Reset();
     delete handle;
 }
