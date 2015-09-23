@@ -26,6 +26,6 @@ void PersistentDisposeContext::CallDisposeOnV8Thread() {
     DBG("PersistentDisposeContext::CallDisposeOnV8Thread");
 
     Persistent<Value>* handle = (Persistent<Value>*)ptr.ToPointer();
-    NanDisposePersistent(*handle);
+	handle->Reset();
     delete handle;
 }
