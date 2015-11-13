@@ -5,7 +5,7 @@
     "url": "http://tomasz.janczuk.org",
     "twitter": "tjanczuk"
   },
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Edge.js: run .NET and Node.js in-process on Windows, Mac OS, and Linux. Hacked for Electron support",
   "tags": [
     "owin",
@@ -28,7 +28,7 @@
     }
   ],
   "dependencies": {
-    "@paulcbetts/edge-cs": "^0.2.8-pre",
+    "@paulcbetts/edge-cs": "^1.0.0",
     "nan": "^2.0.9"
   },
   "devDependencies": {
