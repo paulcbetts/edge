@@ -83,9 +83,11 @@ NAN_METHOD(ClrFunc::Initialize)
             v8::String::Utf8Value assemblyFile(jsassemblyFile);
             v8::String::Utf8Value nativeTypeName(options->Get(Nan::New<v8::String>("typeName").ToLocalChecked()));
             v8::String::Utf8Value nativeMethodName(options->Get(Nan::New<v8::String>("methodName").ToLocalChecked()));
-            typeName = gcnew System::String(*nativeTypeName);
-            methodName = gcnew System::String(*nativeMethodName);
-            assembly = Assembly::UnsafeLoadFrom(gcnew System::String(*assemblyFile));
+
+            typeName = stringV82CLR(nativeTypeName);
+            methodName = stringV82CLR(nativeMethodName);
+            assembly = Assembly::UnsafeLoadFrom(stringV82CLR(assemblyFile));
+
             ClrFuncReflectionWrap^ wrap = ClrFuncReflectionWrap::Create(assembly, typeName, methodName);
             result = ClrFunc::Initialize(
                 gcnew System::Func<System::Object^,Task<System::Object^>^>(
